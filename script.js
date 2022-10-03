@@ -65,6 +65,20 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
+// AT method
+const arr = [23, 11, 64];
+console.log(arr[0]);
+console.log(arr.at(0)); // the same result
+
+// traditional ways getting the last array element
+console.log(arr.length - 1); // to find what position for the last element
+console.log(arr.slice(-1)[0]); // to get the the value of the last element. 64
+// new way
+console.log(arr.at(-1)); // 64
+
+console.log('jonas'.at(-1)); // s
+
+/*
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
@@ -93,7 +107,8 @@ arr.splice(-1); // extract the index -1 then take out this index -1
 console.log(arr); // ['a', 'b', 'c', 'd']
 arr.splice(1, 2); // remove ['b', 'c']
 console.log(arr); // update ['a', 'd']
-*/
+
+
 
 // REVERSE METHOD: also does mutate the original array
 let arr = ['a', 'b', 'c', 'd', 'e'];
@@ -108,3 +123,5 @@ console.log([...arr, ...arr2]); // result the same
 
 // JOIN
 console.log(letters.join(' - '));
+
+*/
