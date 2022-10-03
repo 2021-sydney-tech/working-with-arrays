@@ -74,3 +74,37 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+/*
+// SLICE METHOD
+let arr = ['a', 'b', 'c', 'd', 'e'];
+console.log(arr.slice(2)); // extract by starting at index 2
+console.log(arr.slice(2, 4)); // the parameter = 4 -2 => 2 => means starting at position 2 to 3.
+console.log(arr.slice(-1)); // the last element of the array
+console.log(arr.slice(-2)); // start index -2, then -1
+console.log(arr.slice(1)); // [b, c, d, e]
+console.log(arr.slice(1, -2)); // [b, c]
+console.log([...arr]); // ['a', 'b', 'c', 'd', 'e']
+console.log(arr.slice()); // ['a', 'b', 'c', 'd', 'e']
+
+// SPLICE: work the same as SLICE but it does change the original array. So it mutates the array
+// console.log(arr.splice(2)); // ['c', 'd', 'e']
+arr.splice(-1); // extract the index -1 then take out this index -1
+console.log(arr); // ['a', 'b', 'c', 'd']
+arr.splice(1, 2); // remove ['b', 'c']
+console.log(arr); // update ['a', 'd']
+*/
+
+// REVERSE METHOD: also does mutate the original array
+let arr = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2);
+
+// CONCAT
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]); // result the same
+
+// JOIN
+console.log(letters.join(' - '));
