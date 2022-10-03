@@ -65,6 +65,24 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
+// MAP
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+// SET
+const currenciesUnique = new Set(['USD', 'EUR', 'GDP', 'EUR']);
+console.log(currenciesUnique);
+currenciesUnique.forEach(function (value, _, set) {
+  console.log(`${value}: ${value}`);
+});
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 for (const [i, movement] of movements.entries()) {
