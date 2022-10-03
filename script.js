@@ -65,6 +65,27 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1} : You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1} : You withdrew ${Math.abs(movement)}`); // abs : to remove the negative sign
+  }
+}
+console.log('----FOREACH------------');
+movements.forEach(function (movement, i, arr) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1} : You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1} : You withdrew ${Math.abs(movement)}`); // abs : to remove the negative sign
+  }
+});
+
+//
+
+/*
 // AT method
 const arr = [23, 11, 64];
 console.log(arr[0]);
