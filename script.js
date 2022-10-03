@@ -60,11 +60,54 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
+containerMovements.innerHTML = '';
+
+const displayMovements = function (movements) {
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+      <div class="movements__row">
+          <div class="movements__type 
+          movements__type--${type}">${i + 1} ${type}</div>
+          
+          <div class="movements__value">${mov}</div>
+      </div>
+    `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+// Challenge
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  const dogsJuliaCorrected = dogsJulia.slice();
+  dogsJuliaCorrected.splice(0, 1); // start from index 0, then remove 1 element
+  dogsJuliaCorrected.splice(-2); // remove from index -2
+  // dogsJulia.slice(1, 3);
+
+  const dogs = dogsJuliaCorrected.concat(dogsKate);
+  // console.log(dogs);
+
+  dogs.forEach(function (dog, i) {
+    if (dog >= 3) {
+      console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old.`);
+    } else {
+      console.log(
+        `Dog number ${i + 1} is still a puppy 🐶, and is ${dog} years old.`
+      );
+    }
+  });
+};
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
 // LECTURES
-
+/*
 // MAP
 const currencies = new Map([
   ['USD', 'United States dollar'],
@@ -82,6 +125,9 @@ console.log(currenciesUnique);
 currenciesUnique.forEach(function (value, _, set) {
   console.log(`${value}: ${value}`);
 });
+
+*/
+
 /*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
