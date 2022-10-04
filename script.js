@@ -94,10 +94,25 @@ const createUserNames = function (acc) {
 
 createUserNames(accounts); // stw
 console.log(accounts);
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// update Current balance //////////
+const calDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calDisplayBalance(account1.movements);
+
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
+console.log(max);
+/*
 // FILTER array
 const deposits = movements.filter(mov => mov > 0);
 console.log(movements);
@@ -122,6 +137,7 @@ console.log(balance);
 let balance2 = 0;
 for (const mov of movements) balance2 += mov;
 console.log(balance2);
+*/
 
 /*
 // MAP method
