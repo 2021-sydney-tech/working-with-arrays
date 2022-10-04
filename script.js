@@ -81,6 +81,22 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const user = 'Steven Thomas Williams'; // stw
+const createUserNames = function (acc) {
+  acc.forEach(function (acc) {
+    acc.userName = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join(''); // stw
+  });
+};
+
+createUserNames(accounts); // stw
+console.log(accounts);
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+/*
 // MAP method
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
@@ -101,8 +117,7 @@ const movementsDescription = movements.map(
 );
 
 console.log(movementsDescription);
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+*/
 
 /*
 // Challenge 1
