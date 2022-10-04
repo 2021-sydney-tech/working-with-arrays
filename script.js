@@ -105,6 +105,44 @@ calDisplayBalance(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
+// Challenge 2: Dog Age
+
+// testData1 : [5, 2, 4, 1, 15, 8, 3],
+
+/*
+for (const dogAge of testData1) {
+  if (dogAge <= 2) {
+    humanAge = 2 * dogAge;
+    console.log(humanAge);
+  } else {
+    humanAge = 16 + dogAge * 4;
+    console.log(humanAge);
+  }
+};
+*/
+
+const calAvgHumanAge = function (ages) {
+  const humanAge = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adults = humanAge.filter(age => age >= 18);
+  console.log(humanAge);
+  console.log(adults);
+
+  // method 1
+  //const agvAge = adults.reduce((acc, curr) => acc + curr, 0) / adults.length;
+
+  // method 2
+  const agvAge = adults.reduce(
+    (acc, curr, i, arr) => acc + curr / arr.length,
+    0
+  );
+
+  return agvAge;
+};
+const avg1 = calAvgHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calAvgHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
+
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Maximum value
 const max = movements.reduce((acc, mov) => {
@@ -124,7 +162,9 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
+*/
 
+/*
 // REDUCE method
 // const balance = movements.reduce(function (acc, current, i, arr) {
 //   console.log(`Iteration ${i}: ${acc}`);
@@ -162,6 +202,7 @@ console.log(movementsDescription);
 */
 
 /*
+
 // Challenge 1
 
 const checkDogs = function (dogsJulia, dogsKate) {
@@ -185,6 +226,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 };
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
 */
 
 // LECTURES
