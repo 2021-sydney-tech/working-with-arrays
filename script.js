@@ -102,20 +102,47 @@ const calDisplayBalance = function (movements) {
 };
 calDisplayBalance(account1.movements);
 
+const calDisplaySummary = function (movements) {
+  // calculate deposits
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  // calculate withdraw
+  const outs = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(outs)}€`;
+
+  // calculate interest
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((interest, i, arr) => {
+      console.log(arr);
+      return interest > 1;
+    })
+    .reduce((acc, interest) => acc + interest, 0);
+  labelSumInterest.textContent = `${interest}€`;
+};
+calDisplaySummary(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
 // currency conversion /////////
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-const eurToUsd = 1.1;
 
 // PIPELINE
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
 const totalDepositUSD = movements
   .filter(mov => mov > 0) // step 1: filter all deposits
   // .map(mov => mov * eurToUsd) // step 2: convert eur to usd and copy this array
   .map((mov, i, arr) => {
+    // we can do this way using the 3rd parameter of the callback function if we want to check if any error
     console.log(arr);
-    return mov * eurToUsd; // we can do this way console.log if we want to check if any error
+    return mov * eurToUsd;
   })
   .reduce((acc, mov) => acc + mov, 0); // step 3: sum up all the elements
 console.log(totalDepositUSD);
