@@ -105,21 +105,23 @@ calDisplayBalance(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-// Challenge 2: Dog Age
+// currency conversion /////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
 
-// testData1 : [5, 2, 4, 1, 15, 8, 3],
+// PIPELINE
+const totalDepositUSD = movements
+  .filter(mov => mov > 0) // step 1: filter all deposits
+  // .map(mov => mov * eurToUsd) // step 2: convert eur to usd and copy this array
+  .map((mov, i, arr) => {
+    console.log(arr);
+    return mov * eurToUsd; // we can do this way console.log if we want to check if any error
+  })
+  .reduce((acc, mov) => acc + mov, 0); // step 3: sum up all the elements
+console.log(totalDepositUSD);
 
 /*
-for (const dogAge of testData1) {
-  if (dogAge <= 2) {
-    humanAge = 2 * dogAge;
-    console.log(humanAge);
-  } else {
-    humanAge = 16 + dogAge * 4;
-    console.log(humanAge);
-  }
-};
-*/
+// Challenge 2: Dog Age ////////////////////////////////////////////
 
 const calAvgHumanAge = function (ages) {
   const humanAge = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
@@ -141,6 +143,9 @@ const calAvgHumanAge = function (ages) {
 const avg1 = calAvgHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calAvgHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1, avg2);
+*/
+
+///////////////////////////////////////////////////////////////////////////
 
 /*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -203,7 +208,7 @@ console.log(movementsDescription);
 
 /*
 
-// Challenge 1
+// Challenge 1 ///////////////////////////////////////////////////////////////
 
 const checkDogs = function (dogsJulia, dogsKate) {
   const dogsJuliaCorrected = dogsJulia.slice();
@@ -226,7 +231,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 };
 // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
-
+///////////////////////////////////////////////////////////////
 */
 
 // LECTURES
