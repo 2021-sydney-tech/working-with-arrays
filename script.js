@@ -120,6 +120,7 @@ const calDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((interest, i, arr) => {
+      // we only get any interest that is move than eur 1
       console.log(arr);
       return interest > 1;
     })
@@ -131,6 +132,19 @@ calDisplaySummary(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
+// Challenge 3
+
+const calAvgHumanAge = ages =>
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+const avg1 = calAvgHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calAvgHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
+
+/*
 // currency conversion /////////
 
 // PIPELINE
@@ -146,6 +160,7 @@ const totalDepositUSD = movements
   })
   .reduce((acc, mov) => acc + mov, 0); // step 3: sum up all the elements
 console.log(totalDepositUSD);
+*/
 
 /*
 // Challenge 2: Dog Age ////////////////////////////////////////////
@@ -169,9 +184,8 @@ const calAvgHumanAge = function (ages) {
 };
 const avg1 = calAvgHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calAvgHumanAge([16, 6, 10, 5, 6, 1, 4]);
-console.log(avg1, avg2);
+console.log(avg1, avg2); // 44 47.333333333333336
 */
-
 ///////////////////////////////////////////////////////////////////////////
 
 /*
