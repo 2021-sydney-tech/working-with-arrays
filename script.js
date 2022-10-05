@@ -132,17 +132,27 @@ calDisplaySummary(account1.movements);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
-// Challenge 3
+// FIND method
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+/*
+// Challenge 3 //////////////////////////////////////////////////
 
 const calAvgHumanAge = ages =>
   ages
     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
     .filter(age => age >= 18)
-    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0); // calculate the average age
 
 const avg1 = calAvgHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calAvgHumanAge([16, 6, 10, 5, 6, 1, 4]);
-console.log(avg1, avg2);
+console.log(avg1, avg2); // 44 47.333333333333336
+*/ //////////////////////////////////////////////////////
 
 /*
 // currency conversion /////////
