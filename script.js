@@ -122,7 +122,7 @@ const calDisplaySummary = function (acc) {
     .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((interest, i, arr) => {
       // we only get any interest that is move than eur 1
-      console.log(arr);
+      // console.log(arr);
       return interest > 1;
     })
     .reduce((acc, interest) => acc + interest, 0);
@@ -197,8 +197,24 @@ btnTransfer.addEventListener('click', function (e) {
 // console.log(accounts);
 // console.log(currentAccount);
 
+// Load Request
+// Rule: The request is approved if there is at least one deposit that > 10% of the requested loan
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // add the movement
+    currentAccount.movements.push(amount);
+
+    // update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = ''; // clear input field
+});
+
 /////////////
-// Delete user account ///////////////////////////////
+// Delete user account : using findIndex() method ///////////////////////////////
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   // console.log('Delete');
@@ -219,6 +235,25 @@ btnClose.addEventListener('click', function (e) {
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
+
+// EVERY method: only return true if satisfy all elements  /////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// console.log(movements.every(mov => mov > 0)); // false
+// console.log(account4.movements.every(mov => mov > 0)); // true
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit)); // true
+console.log(movements.every(deposit)); // false
+console.log(movements.filter(deposit)); // [200, 450, 3000, 70, 1300]
+/*
+// includes() and some() methods ///////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+console.log(movements.includes(-130));
+
+const anyDeposits = movements.some(mov => mov > 5000); // to check if there is amount greater than 5000 ==> false
+console.log(anyDeposits);
+*/
 
 /*
 // FIND method
