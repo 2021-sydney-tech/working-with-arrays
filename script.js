@@ -158,7 +158,7 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
     }`;
-    containerApp.style.opacity = 100;
+    containerApp.style.opacity = 100; // show it back
 
     // clear the input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -193,6 +193,28 @@ btnTransfer.addEventListener('click', function (e) {
     // update UI
     updateUI(currentAccount);
   }
+});
+// console.log(accounts);
+// console.log(currentAccount);
+
+/////////////
+// Delete user account ///////////////////////////////
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  // console.log('Delete');
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    // console.log('Successfully deleted');
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    // console.log(index);
+    accounts.splice(index, 1); // delete account
+    containerApp.style.opacity = 0; // hide UI
+  }
+  inputCloseUsername.value = inputClosePin.value = ''; // clear the input fields
 });
 
 /////////////////////////////////////////////////
@@ -396,6 +418,7 @@ movements.forEach(function (movement, i, arr) {
 });
 
 //
+*/
 
 /*
 // AT method
@@ -410,6 +433,7 @@ console.log(arr.slice(-1)[0]); // to get the the value of the last element. 64
 console.log(arr.at(-1)); // 64
 
 console.log('jonas'.at(-1)); // s
+*/
 
 /*
 const currencies = new Map([
@@ -420,7 +444,7 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
+*/ ////////////////////////////////////////////////
 
 /*
 // SLICE METHOD
@@ -456,5 +480,4 @@ console.log([...arr, ...arr2]); // result the same
 
 // JOIN
 console.log(letters.join(' - '));
-
 */
