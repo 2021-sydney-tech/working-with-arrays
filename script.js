@@ -60,11 +60,14 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
-containerMovements.innerHTML = '';
 
 // console.log(accounts);
-const displayMovements = function (movements) {
-  movements.forEach(function (mov, i) {
+const displayMovements = function (movements, sort = false) {
+  containerMovements.innerHTML = '';
+  // sorting
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
@@ -233,8 +236,15 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = ''; // clear the input fields
 });
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
+// sorting
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
+});
+//////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
 // *************************  Sorting Arrays : it mutates. **********************
 // It converts everything to strings and then does sorting itself **********
