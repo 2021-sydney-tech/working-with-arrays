@@ -197,7 +197,7 @@ btnTransfer.addEventListener('click', function (e) {
 // console.log(accounts);
 // console.log(currentAccount);
 
-// Load Request
+// Loan Request
 // Rule: The request is approved if there is at least one deposit that > 10% of the requested loan
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
@@ -236,6 +236,60 @@ btnClose.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 
+// *************************  Sorting Arrays : it mutates. **********************
+// It converts everything to strings and then does sorting itself **********
+const owners = ['jonas', 'zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+
+// Sorting Numbers **********
+// a = current value
+// b = the next value
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// return < 0, A before B (keep order)
+// return > 0, B before A (switch order)
+// Ascending
+//
+movements.sort((a, b) => a - b);
+console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+// Descending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (b > a) return 1;
+// });
+movements.sort((a, b) => b - a);
+console.log(movements); //  [3000, 1300, 450, 200, 70, -130, -400, -650]
+
+// *******************************************************************
+
+// ****** flat and flatMap methods: To remove the nested array and flatten array ***************
+// const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+// console.log(arr.flat()); // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+// console.log(arrDeep.flat(2)); // 2 means two levels deep so that we can flatten all nested arrays
+
+// flat
+// const overallBalance1 = accounts
+//   .map(acc => acc.movements)
+//   .flat()
+//   .reduce((acc, cur) => acc + cur, 0);
+// console.log(overallBalance1); // 17840
+
+// flatMap
+// const overallBalance2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((acc, cur) => acc + cur, 0);
+// console.log(overallBalance2); // 17840
+
+// *************************  *************************
+
+// Piseth, Tola, Vannak
+// student ID, name, score
+// Q1. total how many students fail the course : score < 50
+// Q2. List down those failed students and from which teacher
+
+/*
 // EVERY method: only return true if satisfy all elements  /////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(movements.every(mov => mov > 0)); // false
@@ -246,6 +300,8 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit)); // true
 console.log(movements.every(deposit)); // false
 console.log(movements.filter(deposit)); // [200, 450, 3000, 70, 1300]
+*/
+
 /*
 // includes() and some() methods ///////////////////
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
