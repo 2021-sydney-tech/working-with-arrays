@@ -287,8 +287,26 @@ const { deposits, withdraws } = accounts
     },
     { deposits: 0, withdraws: 0 }
   );
-console.log(deposits, withdraws);
+console.log(deposits, withdraws); // 25180 -7340
 
+// Practice 4. convert any strings to title case
+// This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalized = str => str[0].toUpperCase() + str.slice(1);
+  const exceptions = ['a', 'and', 'an', 'the', 'but', 'or', 'on', 'in', 'with'];
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(element =>
+      exceptions.includes(element) ? element : capitalized(element)
+    )
+    .join(' ');
+
+  return capitalized(titleCase); // this to capitalized after join() method.
+};
+console.log(convertTitleCase('this is a nice title')); //  ['This', 'Is', 'a', 'Nice', 'Title']
+console.log(convertTitleCase('this is a LONG title but not too long')); // ['This', 'Is', 'a', 'Long', 'Title', 'but', 'Not', 'Too', 'Long']
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
 /// ******************Creating and Filling Arrays ***************
 /*
 const arr = [1, 2, 3, 4, 5, 6, 7];
