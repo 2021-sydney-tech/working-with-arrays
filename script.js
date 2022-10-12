@@ -255,9 +255,42 @@ labelBalance.addEventListener('click', function () {
 });
 
 //////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////
+
+///////////////////////////////Array Methods Practice ////////////////////////////////
+// Practice 1. sum of all deposits
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((accu, cur) => accu + cur);
+console.log(bankDepositSum);
+
+// Practice 2. How many deposits there have been in the bank at least 1000.
+// const numDeposit1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+// console.log(numDeposit1000); // 6
+
+const numDeposit1000 = accounts
+  .flatMap(acc => acc.movements)
+  // .reduce((count, cur) => (cur >= 1000 ? count​= 1 : count), 0);
+  .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0); // prefixed
+console.log(numDeposit1000); // 6
+
+// Practice 3.
+const { deposits, withdraws } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sums, cur) => {
+      // cur > 0 ? (sums.deposits += cur) : (sums.withdraws += cur);
+      sums[cur > 0 ? 'deposits' : 'withdraws'] += cur;
+      return sums;
+    },
+    { deposits: 0, withdraws: 0 }
+  );
+console.log(deposits, withdraws);
 
 /// ******************Creating and Filling Arrays ***************
+/*
 const arr = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
@@ -283,6 +316,7 @@ const dice100 = Array.from(
   () => Math.trunc(Math.random() * 100) + 1
 );
 console.log(dice100);
+*/
 
 // *************************  Sorting Arrays : it mutates. **********************
 // It converts everything to strings and then does sorting itself **********
