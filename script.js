@@ -243,32 +243,70 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
+
+// filling Arrays
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+  // console.log(movementsUI.map(el => el.textContent.replace('€', '')));
+});
+
 //////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
+/// ******************Creating and Filling Arrays ***************
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7); // create 7 elements array
+// x.fill(1); // then fill it up with number 1
+x.fill(1, 3); // fill up with number 1 starting from index# 3
+console.log(x);
+
+arr.fill(23, 4, 6); // fill with 23 from index# 4 till # 5
+console.log(arr); // [1, 2, 3, 4, 23, 23, 7]
+
+// Array.from()
+// 1st parameter: we pass the object with length property
+// 2nd  parameter is mapping function
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y); // [1, 1, 1, 1, 1, 1, 1]
+
+const z = Array.from({ length: 7 }, (cur, i) => i + 1); // [1, 2, 3, 4, 5, 6, 7]
+console.log(z);
+
+const dice100 = Array.from(
+  { length: 50 },
+  () => Math.trunc(Math.random() * 100) + 1
+);
+console.log(dice100);
+
 // *************************  Sorting Arrays : it mutates. **********************
 // It converts everything to strings and then does sorting itself **********
-const owners = ['jonas', 'zach', 'Adam', 'Martha'];
-console.log(owners.sort());
+// const owners = ['jonas', 'zach', 'Adam', 'Martha'];
+// console.log(owners.sort());
 
 // Sorting Numbers **********
 // a = current value
 // b = the next value
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // return < 0, A before B (keep order)
 // return > 0, B before A (switch order)
 // Ascending
 //
-movements.sort((a, b) => a - b);
-console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
+// movements.sort((a, b) => a - b);
+// console.log(movements); // [-650, -400, -130, 70, 200, 450, 1300, 3000]
 // Descending
 // movements.sort((a, b) => {
 //   if (a > b) return -1;
 //   if (b > a) return 1;
 // });
-movements.sort((a, b) => b - a);
-console.log(movements); //  [3000, 1300, 450, 200, 70, -130, -400, -650]
+// movements.sort((a, b) => b - a);
+// console.log(movements); //  [3000, 1300, 450, 200, 70, -130, -400, -650]
 
 // *******************************************************************
 
