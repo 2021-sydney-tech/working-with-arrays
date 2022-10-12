@@ -271,15 +271,60 @@ dogs.forEach(
 console.log(dogs);
 
 // 2. Find Sarah's dog and log to the console whether it's eating too much or too little
-const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah')); // find method returns the first element
 console.log(sarahDog);
-console.log(
-  `Sarah's dog is eating ${
-    sarahDog.curFood > sarahDog.recommendedFood ? 'too much.' : 'too little.'
-  }`
-);
+// console.log(
+//   `Sarah's dog is eating ${
+//     sarahDog.curFood > sarahDog.recommendedFood ? 'too much.' : 'too little.'
+//   }`
+// );
 
-// 3.
+// 3. Create an array containing all owners of dogs who eat too much & eating too little
+// const ownersEatTooMuch = [];
+// const ownersEatTooLittle = [];
+// dogs.forEach(dog =>
+//   dog.curFood > dog.recommendedFood
+//     ? ownersEatTooMuch.push(dog.owners)
+//     : ownersEatTooLittle.push(dog.owners)
+// );
+// console.log(ownersEatTooMuch.flat());
+// console.log(ownersEatTooLittle.flat());
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch);
+console.log(ownersEatTooLittle);
+
+// 4. Log a string to the console for each array
+console.log(`
+${ownersEatTooMuch.join(' and ')}'s dogs eat too much.
+`);
+console.log(`
+${ownersEatTooLittle.join(' and ')}'s dogs eat too little.
+`);
+
+// 5. Log to the console whether there is any dog eating exactly the amount of food that is recommended (just true or false)
+console.log(dogs.some(dog => dog.curFood === dog.recommendedFood)); // false
+
+// 6. Log to the console whether there is any dog eating an okay amount of food (just true or false)
+const eatingOK = dog =>
+  dog.curFood > dog.recommendedFood * 0.9 &&
+  dog.curFood < dog.recommendedFood * 1.1;
+console.log(dogs.some(eatingOK));
+
+// 7. Create an array containing the dogs that are eating an okay amount of food (try to reuse the condition used in 6.)
+console.log(dogs.filter(eatingOK));
+
+// 8. Create a shallow copy of the 'dogs' array and sort it by recommended food portion in an ascending order (keep in mind that the portions are inside the   array's objects 😉)
+
+const sortByRecomFood = dogs.sort(
+  (a, b) => a.recommendedFood - b.recommendedFood
+);
+console.log(sortByRecomFood);
+
 /*
 ///////////////////////////////Array Methods Practice ////////////////////////////////
 // Practice 1. sum of all deposits
