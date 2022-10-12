@@ -256,6 +256,31 @@ labelBalance.addEventListener('click', function () {
 
 //////////////////////////////////////////////////////////////////
 
+// CODING CHALLENGE # 4 **************************
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// 1. Add a property name recommendedFood in the dogs array
+dogs.forEach(
+  elm => (elm.recommendedFood = Math.trunc(elm.weight ** 0.75 * 28))
+);
+console.log(dogs);
+
+// 2. Find Sarah's dog and log to the console whether it's eating too much or too little
+const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(sarahDog);
+console.log(
+  `Sarah's dog is eating ${
+    sarahDog.curFood > sarahDog.recommendedFood ? 'too much.' : 'too little.'
+  }`
+);
+
+// 3.
+/*
 ///////////////////////////////Array Methods Practice ////////////////////////////////
 // Practice 1. sum of all deposits
 const bankDepositSum = accounts
@@ -289,6 +314,7 @@ const { deposits, withdraws } = accounts
   );
 console.log(deposits, withdraws); // 25180 -7340
 
+
 // Practice 4. convert any strings to title case
 // This Is a Nice Title
 const convertTitleCase = function (title) {
@@ -304,9 +330,12 @@ const convertTitleCase = function (title) {
 
   return capitalized(titleCase); // this to capitalized after join() method.
 };
+
 console.log(convertTitleCase('this is a nice title')); //  ['This', 'Is', 'a', 'Nice', 'Title']
 console.log(convertTitleCase('this is a LONG title but not too long')); // ['This', 'Is', 'a', 'Long', 'Title', 'but', 'Not', 'Too', 'Long']
 console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+*/
+
 /// ******************Creating and Filling Arrays ***************
 /*
 const arr = [1, 2, 3, 4, 5, 6, 7];
